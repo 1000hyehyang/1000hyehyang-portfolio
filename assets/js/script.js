@@ -162,3 +162,32 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// Skills Toggle
+const toggleBtnBox = document.querySelector('[data-toggle-box]');
+const toggleBtns = document.querySelectorAll('[data-toggle-btn]');
+const skillsBox = document.querySelector('[data-skills-box]');
+const skillsList = skillsBox.querySelector('.skills-list');
+const toolsList = skillsBox.querySelector('.tools-list');
+
+// 기본값
+skillsList.style.display = 'flex';
+
+toggleBtns.forEach((btn, idx) => {
+  btn.addEventListener('click', () => {
+    // 버튼 활성화 스타일
+    toggleBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // 배경바 위치 전환
+    if (idx === 0) {
+      toggleBtnBox.classList.remove('tools-active');
+      skillsList.style.display = 'flex';
+      toolsList.style.display = 'none';
+    } else {
+      toggleBtnBox.classList.add('tools-active');
+      skillsList.style.display = 'none';
+      toolsList.style.display = 'flex';
+    }
+  });
+});
